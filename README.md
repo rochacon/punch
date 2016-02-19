@@ -1,11 +1,11 @@
 # punch
 
-  A Python framework focused on (but not limited to) JSON APIs.
+A Python framework focused on (but not limited to) JSON APIs.
 
 
-  ## TODO
+## TODO
 
 
-  ## License
+## License
 
-  MIT
+MIT
