@@ -11,11 +11,10 @@ def api_version(request, response):
 
 @app.before
 def authenticate(request):
-   if request.authorization != ('Bearer', 'token'):
-      response = punch.Response()
-      response.status_int = 401
-      response.json = {"status": "Unauthorized"}
-      return response
+    if request.authorization != ('Bearer', 'token'):
+        return punch.Response(json={
+            'status': 'Unauthorized',
+        }, status=401)
 
 
 @app.view('/')
