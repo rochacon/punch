@@ -18,7 +18,6 @@ class App(object):
         if view_fn is None:
             response = Response()
             response.status_int = 404
-            response.json = None
             return response(environ, start_response)
 
         # before middlewares
