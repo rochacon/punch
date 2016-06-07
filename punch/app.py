@@ -58,12 +58,13 @@ class App(object):
         return decorator
 
     def get_view_for_route(self, request):
-        views = list(filter(lambda x: request.path == x.punch_path, self.views))
+        def f(view):
+            methods = view.punch_methods
+            return ((methods is None or request.method in methods)
+                     and request.path == view.punch_path)
+        views = list(filter(f, self.views))
         if not views:
             return
-        # views = list(filter(lambda x: (x.punch_methods and request.method in x.punch_methods), views))
-        # if not views:
-        #     return
         return views[0]
 
     def serve(self, server=None):
